@@ -1,5 +1,5 @@
 <?php
-class KlantInfo
+class UitslagInfo
 {
     private $db;
 
@@ -8,28 +8,29 @@ class KlantInfo
         $this->db = new Database();
     }
 
-    public function getKlantInfo()
+    public function getUitslagInfo()
     {
-        $this->db->query("SELECT `Voornaam`, `Tussenvoegsel`, `Achternaam`, `IsVolwassen`, `Mobiel`, `Email` FROM `Persoon` INNER JOIN `Contact` ON Persoon.id = Contact.PersoonId;");
+        $this->db->query("SELECT Persoon.Voornaam, Persoon.Tussenvoegsel, Persoon.Achternaam, Uitslag.Aantalpunten, Reservering.Datum
+        FROM Persoon
+        INNER JOIN Spel ON Persoon.Id = Spel.PersoonId
+        INNER JOIN Uitslag ON Spel.Id = Uitslag.SpelId
+        INNER JOIN Reservering ON Reservering.PersoonId = Persoon.Id ORDER BY Reservering.Datum DESC;");
 
         return $this->db->resultSet();;
     }
 
-    public function getSingleKlantInfo($id)
+    public function getSingleUitslagInfo($id)
     {
-        $this->db->query("SELECT `Voornaam`, `Tussenvoegsel`, `Achternaam`, `IsVolwassen`, `Mobiel`, `Email` FROM `Persoon` INNER JOIN `Contact` ON Persoon.id = Contact.PersoonId WHERE `Id` = :id;");
-        $this->db->bind(':id', $id, PDO::PARAM_INT);
+        $this->db->query("SELECT Persoon.Voornaam, Persoon.Tussenvoegsel, Persoon.Achternaam, Uitslag.Aantalpunten, Reservering.Datum
+        FROM Persoon
+        INNER JOIN Spel ON Persoon.Id = Spel.PersoonId
+        INNER JOIN Uitslag ON Spel.Id = Uitslag.SpelId
+        INNER JOIN Reservering ON Reservering.PersoonId = Persoon.Id ORDER BY Reservering.Datum DESC;");
 
         return $this->db->single();
     }
 
-    
-    public function getUitslagInfo()
-    {
-        $this->db->query("SELECT `Voornaam`, `Tussenvoegsel`, `Achternaam`, `IsVolwassen`, `Mobiel`, `Email` FROM `Persoon` INNER JOIN `Contact` ON Persoon.id = Contact.PersoonId;");
-
-        return $this->db->resultSet();;
-    }
+  
 
 }
 

@@ -22,14 +22,14 @@
             $rows = '';
             foreach ($klantinfo as $value) {
               $rows .= "<tr>
-                            
+           
                           <td>$value->Voornaam</td>
                           <td>$value->Tussenvoegsel</td>
                           <td>$value->Achternaam</td>
                           <td>$value->Mobiel</td>
                           <td>$value->Email</td>
                           <td>$value->IsVolwassen</td>
-                          <td><a href='" . URLROOT . "/klanteninfo/update/$value->id'>Update</a></td>
+                          <td><a href='" . URLROOT . "/klanteninfo/update/$value->Email'>Update</a></td>
                         </tr>";
             }
 
