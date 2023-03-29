@@ -1,6 +1,4 @@
-<?php require APPROOT . '/views/includes/head.php';
-  echo $data["title"];
-?>
+<?echo $data["title"];?>
 <a href="<?=URLROOT;?>/countries/create">Nieuw record</a>
 <table>
   <thead>

@@ -1,4 +1,3 @@
-<?php require APPROOT . '/views/includes/head.php'; ?>
 <h3> <?= $data["title"]; ?></h3>
 
 <form action="<?= URLROOT; ?>/countries/scanCountry" method="post">
@@ -21,4 +20,3 @@
 </table>
 
 <a href="<?= URLROOT;?>/homepages/index">home</a>
-<?php require APPROOT . '/views/includes/footer.php'; ?>
